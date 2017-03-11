@@ -31,9 +31,9 @@ router.get('/login', function(req, res, next){
 // POST logins
 router.post('/login',function(req,res,next){
   var User = mongoose.model('User', userSchema);
-  var email = req.parm('email');
+  var email = req.param('email');
   var password = req.param('password');
-  var encryptedPassword = crypto.createHmac('sha256',appSecret).update(password).digest('hex');
+  var encryptedPassword = crypto.createHmac('sha256',"hi").update(password).digest('hex');
   User.findOne({
     email: email,
     encryptedPassword: encryptedPassword
@@ -113,8 +113,7 @@ router.post('/signup',function(req,res,next){
     }
       else{
         // encryptd the password
-        var encryptedPassword = crypto.createHmac('sha256',appSecret)
-                  .update(password).digest('hex');
+        var encryptedPassword = crypto.createHmac('sha256','hi').update(password).digest('hex');
         // create a new user
         var user = new User({
           email: email,
