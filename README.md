@@ -1,4 +1,4 @@
-# Study Tinder
+# Studiosus
 
 ## Problem
 
