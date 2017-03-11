@@ -1,4 +1,4 @@
-# Professional Document Pre-Screener
+# Study Tinder
 
 ## Problem
 
