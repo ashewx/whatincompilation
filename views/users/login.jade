@@ -1,0 +1,13 @@
+extends ../layout
+block content
+  h1 Login
+  form(action~'/users/login', method='post')
+    fieldset
+      .field
+
+      .registrations
+      a(href='/users/signup') Register
+      br
+      a(href='/users/login') Login
+      br
+      a(href='/')
