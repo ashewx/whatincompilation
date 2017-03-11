@@ -1,0 +1,28 @@
+/* Icons to use
+
+Study preferences
+-group  <i class="fa fa-users" aria-hidden="true"></i>
+-individual  <i class="fa fa-user" aria-hidden="true"></i>
+
+Noise Factor
+-Music <i class="fa fa-music" aria-hidden="true"></i>
+-Some Noise <i class="fa fa-volume-up" aria-hidden="true"></i>
+-Silent <i class="fa fa-volume-off" aria-hidden="true"></i>
+
+Location
+-Library <i class="fa fa-book" aria-hidden="true"></i>
+-Home <i class="fa fa-home" aria-hidden="true"></i>
+-Office  <i class="fa fa-building" aria-hidden="true"></i>
+-Cafe <i class="fa fa-coffee" aria-hidden="true"></i>
+
+Learning style
+-Audio <i class="fa fa-assistive-listening-systems" aria-hidden="true"></i>
+-Visual <i class="fa fa-eye" aria-hidden="true"></i>
+-Kinesthetic <i class="fa fa-hand-paper-o" aria-hidden="true"></i>
+-Oral <i class="fa fa-comment-o" aria-hidden="true"></i>
+-Writing <i class="fa fa-pencil" aria-hidden="true"></i>
+
+
+Icon for removing items: <i class="fa fa-times" aria-hidden="true"></i>
+
+*/

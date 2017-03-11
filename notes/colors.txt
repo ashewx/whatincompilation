@@ -1,0 +1,12 @@
+/*
+Colors
+
+Yellow: e1ac26
+Orange: dc380f
+Red: 9f0812
+Purple: 6347b2
+Blue: 368dd5
+Green: 70af1e
+Gray: 7e887a
+
+*/

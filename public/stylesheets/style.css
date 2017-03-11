@@ -6,3 +6,23 @@ body {
 a {
   color: #00B7FF;
 }
+
+.courses .selected{
+
+}
+
+.learning-styles .selected {
+  color: #70af1e;
+}
+
+.study-preferences .selected {
+  color: #368dd5;
+}
+
+.noise-factor .selected {
+  color: #e1ac26;
+}
+
+.location .selected{
+  color: #6347b2;
+}
