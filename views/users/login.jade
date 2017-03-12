@@ -1,13 +1,66 @@
 extends ../layout
+head
+  link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+  link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css')
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js')
+  script(script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
 block content
-  h1 Login
-  form(action~'/users/login', method='post')
-    fieldset
-      .field
 
-  .registrations
-      a(href='/users/signup') Register
-      br
-      a(href='/users/login') Login
-      br
-      a(href='/')
+
+  nav.navbar.navbar-default.navbar-static-top
+    .container-fluid
+      .navbar-header
+
+  -if (notice)
+    strong=notice
+    br
+    hr
+  .modal-dialog
+    .modal-content
+      .modal-header
+        h4.modal-title Log into Studiosus
+      .modal-body
+        .row
+          .col-xs-6
+            .well
+              form(action='/users/login', method='post')
+                .form-group
+                  label.control-label(for="userEmail",) Email
+                  input.form-control(type="email", id="userEmail", name="email", value="", required="", title="Please enter your email",
+                  placeholder="Enter your email", oninvalid="this.setCustomValidity('This is not a valid email address')")
+                  span.help-block
+                .form-group
+                  label.control-label(for="userPassword") Password
+                  input.form-control(type="text", id="userPassword", name="password", value="", required="", title="Please enter your password", placeholder="Enter your password")
+                  span.help-block
+                .alert.alert-error.hide
+                  Wrong username or password
+                .checkbox
+                  label
+                    input(type="checkbox", name="remember")
+                    span Remember me
+                  p.help-block (if this is a private computer)
+                button.btn.btn-success.btn-block(type="submit", name="submit", value="Login") Log in
+          .col-xs-6
+            p.lead Register a Studiosus account
+            ul.list-unstyled(style='line-height: 2')
+              li
+                span.fa.fa-check.text-success
+                |  Find good groups
+              li
+                span.fa.fa-check.text-success
+                |  Improve your test scores
+              li
+                span.fa.fa-check.text-success
+                |  Connect with new students
+              li
+                span.fa.fa-check.text-success
+                |  Easy to use
+              li
+                span.fa.fa-check.text-success
+                |  Placeholder
+              li
+                span.fa.fa-check.text-success
+                |  Placeholder
+            p
+              a.btn.btn-info.btn-block(href='/users/signup') Register Now!

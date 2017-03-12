@@ -1,18 +1,63 @@
 var express = require('express');
 var router = express.Router();
+var mongoose = require('mongoose');
+var crypto = require('crypto');
+var appSecret = process.env.NODE_APP_SECRET;
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+  if (!req.cookies.userID){
+    return res.redirect('/users/login');
+  }
+
+  var User = mongoose.model('User', userSchema);
+  User.find({})
+    .exec(function(err, users){
+    if (err) throw err;
+
+    res.status(200).json({users: users});
+  });
 });
 
-// GET logins
-router.get('/login',function(req,res,next){
-  res.render('users/login');
+// GET login
+router.get('/login', function(req, res, next){
+  var notice = req.cookies.notice;
+
+  res.render('users/login', {
+    notice: notice
+  });
 });
 
 // POST logins
-router.post('/login',function(req,res,next){});
+router.post('/login',function(req,res,next){
+  var User = mongoose.model('User', userSchema);
+  var email = req.param('email');
+  var password = req.param('password');
+  var encryptedPassword = crypto.createHmac('sha256',"hi").update(password).digest('hex');
+  User.findOne({
+    email: email,
+    encryptedPassword: encryptedPassword
+  })
+  .exec(function(err, user){
+    if (err) throw err;
+
+    // email and password does not match
+    if (!user){
+      console.log('Email and password does not match');
+      res.cookie('notice', 'Email and password does not match', {
+        maxAge: new Date(Date.now() + 10)
+      });
+      return res.redirect('/users/login');
+    }
+      else {
+        res.cookie('userID', user._id, {
+          maxAge: new Date(Date.now() + 10)
+        });
+        return res.redirect('/users');
+      }
+  });
+
+});
 
 // GET register
 router.get('/signup',function(req,res,next){
@@ -24,29 +69,72 @@ router.get('/signup',function(req,res,next){
 
 // POST register
 router.post('/signup',function(req,res,next){
+  var User = mongoose.model('User', userSchema);
   var email = req.param('email');
   var password = req.param('password');
   var passwordAgain = req.param('passwordAgain');
   var firstname = req.param('firstname');
   var lastname = req.param('lastname');
+  var university = req.param('university');
 
-  console.log(email);
-  console.log(password);
-  console.log(passwordAgain);
+  // check if empty
+  if (!password || !email){
+    console.log('Empty fields.');
+    res.cookie('notice', 'Please fill in al the fields correctly', {
+      maxAge: new Date(Date.now() + 10)
+    });
 
-  // check if password match
-  if (password != passwordAgain){
-    console.log('Password do not match');
-    res.cookie('notice', 'Passwords do not match');
-
-    return res.redirect('/users/signup')
+    return res.redirect('/users/signup');
   }
 
-  res.status(200).json({email: email,
-    password: password,
-    firstname: firstname,
-    lastname: lastname
+  // check if passwords match
+  if (password !== passwordAgain){
+    console.log('Passwords does not match');
+    res.cookie('notice', 'Passwords does not match', {
+      maxAge: new Date(Date.now() + 10)
+    });
+
+    return res.redirect('/users/signup');
+  }
+
+  // check if user exists
+  User.findOne({
+    email: email
+  })
+  .exec(function(err, user){
+    if (err) throw err;
+
+    if (user){
+      console.log('User exists');
+      res.cookie('notice', 'User exists', {
+        maxAge: new Date(Date.now() + 10)
+      });
+      return res.redirect('/users/signup');
+    }
+      else{
+        // encryptd the password
+        var encryptedPassword = crypto.createHmac('sha256','hi').update(password).digest('hex');
+        // create a new user
+        var user = new User({
+          email: email,
+          encryptedPassword: encryptedPassword
+        });
+        user.save(function(err){
+          if (err) throw err;
+          res.cookie('notice', 'Successfully registered', {
+            maxAge: new Date(Date.now() + 10)
+          });
+
+          return res.redirect('/users/login');
+        });
+      }
+    });
+
   });
+
+router.get('/logout', function(req, res, next){
+  res.clearCookie('userID');
+  res.redirect('/users/login');
 });
 
 module.exports = router;
