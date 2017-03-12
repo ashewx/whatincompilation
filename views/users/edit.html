@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css'>
+  <h5>Studiosus</h5>
+</head>
+<body>
+  <div id ="editProfile" name="editProfile" title="Edit Profile" style="font-family: Helvetica; font size: 14pt; border: 1 px solid black;">
+    <div id="subDiv1" name="subDiv1" title="Subdivision Div Element" style="color: black;">
+      <h5>Upload Image</h5>
+      <form action="/action_page.php">
+        <input type="file" name="pic" accept="image/*">
+        <input type="submit" value="Upload">
+      </form>
+
+      <h5>First Name Appears Here</h5>
+
+      <form action="/action_page.php">
+        Share a little bit about yourself:<br>
+        <input type="text" bio="bio"></br>
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+
+    <br /> <!-- this is a line break-->
+
+    <div id="subDiv2" name="subDiv2" title="Subdivision Div Element" style="color: black;">
+      <table>
+        <tr>
+          <td>Courses</td>
+          <td><select>
+            <option value="asu101">ASU101</option>
+            <option value="bio181">BIO181</option>
+            <option value="chm113">CHM113</option>
+            <option value="cse110">CSE110</option>
+            <option value="cse205">CSE205</option>
+            <option value="eng101">ENG101</option>
+            <option value="eng102">ENG102</option>
+            <option value="eng105">ENG105</option>
+            <option value="fse100">FSE100</option>
+            <option value="glg101">GLG101</option>
+            <option value="glg103">GLG103</option>
+            <option value="mat265">MAT265</option>
+            <option value="mat266">MAT266</option>
+            <option value="mat267">MAT267</option>
+            <option value="phy121">PHY121</option>
+            <option value="phy122">PHY122</option>
+          </select>
+          <!--
+          Display the chosen courses in little boxes, along with the remove option
+          <th>   display: inline; </th>
+        -->
+      </td>
+        </tr>
+        <tr>
+          <td>Learning Styles</td>
+          <td> <div class="list-group">
+            <i class="fa fa-assistive-listening-systems fa-fw" aria-hidden="true"></i>&nbsp; Auditory
+            <a class="list-group-item" href="#"><i class="fa fa-eye fa-fw" aria-hidden="true"></i>&nbsp; Visual</a>
+            <a class="list-group-item" href="#"><i class="fa fa-hand-paper-o fa-fw" aria-hidden="true"></i>&nbsp; Kinesthetic</a>
+            <a class="list-group-item" href="#"><i class="fa fa-comment-o fa-fw" aria-hidden="true"></i>&nbsp; Verbal</a>
+            <a class="list-group-item" href="#"><i class="fa fa-pencil-square-o fa-fw" aria-hidden="true"></i>&nbsp; Write it Out</a>
+          </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Study Preferences</td>
+          <td> <div class="list-group">
+            <a class="list-group-item" href="#"><i class="fa fa-users fa-fw" aria-hidden="true"></i>&nbsp; </a>
+            <a class="list-group-item" href="#"><i class="fa fa-user fa-fw" aria-hidden="true"></i>&nbsp; </a>
+        </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Noise Factor</td>
+        <td> <div class="list-group">
+          <a class="list-group-item" href="#"><i class="fa fa-music fa-fw" aria-hidden="true"></i>&nbsp; </a>
+          <a class="list-group-item" href="#"><i class="fa fa-volume-up fa-fw" aria-hidden="true"></i>&nbsp; </a>
+          <a class="list-group-item" href="#"><i class="fa fa-volume-off fa-fw" aria-hidden="true"></i>&nbsp; </a>
+        </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Study Location</td>
+        <td> <div class="list-group">
+          <a class="list-group-item" href="#"><i class="fa fa-book fa-fw" aria-hidden="true"></i>&nbsp; </a>
+          <a class="list-group-item" href="#"><i class="fa fa-home fa-fw" aria-hidden="true"></i>&nbsp; </a>
+          <a class="list-group-item" href="#"><i class="fa fa-building fa-fw" aria-hidden="true"></i>&nbsp; </a>
+          <a class="list-group-item" href="#"><i class="fa fa-coffee fa-fw" aria-hidden="true"></i>&nbsp; </a>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</body>
+</html>
